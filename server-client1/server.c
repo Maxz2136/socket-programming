@@ -10,31 +10,6 @@
 
 #define max_buffer_size 256
 
-// method to parse the arithmetic expression string and evaluate the result
-int evaluate_expression(char* expression) {
-    char exp[max_buffer_size];
-    strcpy(exp, expression);
-    // first do a parse of the expression to check for correctness of the expression (first check --> parantheses balance) and then store position of the parentheses
-    char stack[max_buffer_size];
-    int count = 0;
-    for (int i = 0; i < strlen(exp), i++) {
-        if (exp[i] == '(') {
-            stack[count] = exp[i] && count++;
-        }
-        if (exp[i] == ')') {
-            if((count - 1 >= 0) && exp[count-1] == '(') {
-                if (count > 0) count--;
-            } else {
-                return -1;
-            }
-        }
-    }
-    if (count > 0) return -1;
-    
-    return 0;
-}
-
-
 int main(int argc, char* argv[]) {
     
     if (argc < 2) {
