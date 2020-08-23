@@ -11,60 +11,6 @@
 
 #define max_buffer_size 256
 
-int ops(char a, char b, char operator) {
-    int u = a - 48;
-    int v = b - 48;
-    switch(operator) {
-        case '+': return u+v;
-        case '-': return u-v;
-        case '*': return u*v;
-        case '/': return u/v;
-    }
-}
-
-// method to parse the arithmetic expression string and evaluate the result
-int evaluate_expression(char* expression) {
-    char exp[max_buffer_size];
-    strcpy(exp, expression);
-    // first do a parse of the expression to check for correctness of the expression (first check --> parantheses balance) and then store position of the parentheses
-    char stack[max_buffer_size];
-    int count = 0;
-    for (int i = 0; i < strlen(exp); i++) {
-        if (exp[i] == '(') {
-            stack[count] = exp[i] && count++;
-        }
-        if (exp[i] == ')') {
-            if((count - 1 >= 0) && exp[count-1] == '(') {
-                if (count > 0) count--;
-            } else {
-                return -1;
-            }
-        }
-    }
-    if (count > 0) return -1;
-
-    int val[max_buffer_size];
-    char ops[max_buffer_size];
-    int val_count = 0, ops_count = 0;
-    for (int i = 0; i < strlen(exp); i++) {
-        if (exp[i] == '(') {
-            ops[ops_count] = exp[i];
-            ops_count++;
-        }
-        if (isdigit(exp[i])) {
-            int var = 0;
-            while(isdigit(exp[i]) && i < strlen(exp)) {
-                var = var * 10 + (exp[i] - 48);
-                i++;
-            }
-            i--;
-        }
-        
-    }
-    return 0;
-}
-
-
 int main(int argc, char* argv[]) {
     
     if (argc < 2) {
