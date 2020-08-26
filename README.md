@@ -34,3 +34,7 @@ This repository contains three types of server-client architecture - <br>
   example: <br>
   gcc client1.c -o client1 <br>
   ./client1 127.0.0.1 5666
+
+
+PS: The code may be a little cluttered but I am not going to declutter it since the comments document my findings and thought process while I was researching and creating the client server model. Some of the comments also state some queries which are not addressed yet and some finding and research still needs to be done by me regarding them.
+All the code comments are precious!
